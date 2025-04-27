@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE35A2D4-F16B-43F2-A317-D033ABD5B6B3}</ProjectGuid>
+    <ProjectGuid>{FE35A2D4-F16B-43F2-A317-D033ABD5B6B3}</ProjectGuid> <!-- Keep your original ProjectGuid -->
     <OutputType>Exe</OutputType>
     <RootNamespace>DungeonExplorer</RootNamespace>
     <AssemblyName>DungeonExplorer</AssemblyName>
@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <!-- LangVersion could be added if needed, but usually defaults fine for 4.7.2 -->
+    <!-- <LangVersion>latest</LangVersion> -->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <!-- Standard .NET Framework References -->
     <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Core" /> <!-- Includes System.Linq -->
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,13 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Room.cs" />
+    <!-- List of C# files to compile -->
+    <Compile Include="Program.cs" />      <!-- Entry Point -->
+    <Compile Include="Game.cs" />         <!-- Main game logic -->
+    <Compile Include="GameMap.cs" />      <!-- Added: Manages rooms -->
+    <Compile Include="Room.cs" />         <!-- Updated: Location -->
+    <Compile Include="Interfaces.cs" />   <!-- Added: IDamageable, ICollectible -->
+    <Compile Include="Creature.cs" />     <!-- Added: Base for Player/Monster -->
+    <Compile Include="Player.cs" />       <!-- Updated: Player character -->
+    <Compile Include="Monster.cs" />      <!-- Added: Monster base and types -->
+    <Compile Include="Inventory.cs" />    <!-- Added: Manages player items -->
+    <Compile Include="Item.cs" />         <!-- Added: Item base and types -->
+    <Compile Include="Properties\AssemblyInfo.cs" /> <!-- Standard project info -->
   </ItemGroup>
   <ItemGroup>
+    <!-- Configuration File -->
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
