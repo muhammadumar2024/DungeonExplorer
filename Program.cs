@@ -8,7 +8,7 @@ namespace DungeonExplorer
         {
             Game game = new Game();
             game.Start();
-            Console.WriteLine("\nGame Over."); // Or some other end message
+            Console.WriteLine("\nGame Over.");
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
